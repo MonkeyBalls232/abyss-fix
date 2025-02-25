@@ -439,7 +439,7 @@ do
         --
         Window.SetText(1, "Checking Assets")
         --
-        Window.SetText(1, "Checking Input")
+        Window.SetText(1, "Checking For Errors")
         --
         Window.SetText(2, "Finished")
         --
