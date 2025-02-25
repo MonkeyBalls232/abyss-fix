@@ -456,7 +456,10 @@ function Library.CreateLoader(Title, WindowSize)
         Visible = true,
         Data = Library.Theme.Logo
     })
+
+    return Window
 end
+
 
         --
         MiddleIcon.Position = Vector2.new(WindowOutline.Position.X + (WindowOutline.Size.X / 2) - (MiddleIcon.Size.X / 2), WindowOutline.Position.Y + (WindowOutline.Size.Y / 2) - (MiddleIcon.Size.Y / 2) - 15)
