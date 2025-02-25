@@ -342,39 +342,6 @@ do
 end
 --
 do
-function Library.CreateLoader(Title, WindowSize)
-    local Window = { Max = 2, Current = 0 }
-
-    -- Library.Theme.Logo = Utility.AddImage("Abyss/Assets/UI/Logo2.png", "https://i.imgur.com/HI4UTmZ.png")
-    -- Creating UI elements without Drawing
-    local WindowOutline = Instance.new("Frame")
-    WindowOutline.Size = UDim2.new(0, WindowSize.X, 0, WindowSize.Y)
-    WindowOutline.BorderSizePixel = 0
-    WindowOutline.BackgroundColor3 = Library.Theme.Outline
-    WindowOutline.Position = Utility.MiddlePos(WindowOutline)
-
-    local WindowOutlineBorder = Instance.new("Frame")
-    WindowOutlineBorder.Size = UDim2.new(0, WindowSize.X - 2, 0, WindowSize.Y - 2)
-    WindowOutlineBorder.Position = UDim2.new(0, WindowOutline.Position.X.Offset + 1, 0, WindowOutline.Position.Y.Offset + 1)
-    WindowOutlineBorder.BorderSizePixel = 0
-    WindowOutlineBorder.BackgroundColor3 = Library.Theme.Accent[1]
-
-    local WindowFrame = Instance.new("Frame")
-    WindowFrame.Size = UDim2.new(0, WindowSize.X - 4, 0, WindowSize.Y - 4)
-    WindowFrame.Position = UDim2.new(0, WindowOutlineBorder.Position.X.Offset + 1, 0, WindowOutlineBorder.Position.Y.Offset + 1)
-    WindowFrame.BorderSizePixel = 0
-    WindowFrame.BackgroundTransparency = 1
-    WindowFrame.BackgroundColor3 = Library.Theme.DarkContrast
-
-    local WindowTitle = Instance.new("TextLabel")
-    WindowTitle.Font = Library.Theme.Font
-    WindowTitle.TextSize = Library.Theme.TextSize
-    WindowTitle.TextColor3 = Library.Theme.Text
-    WindowTitle.Text = Title
-    WindowTitle.Position = UDim2.new(0, WindowFrame.Position.X.Offset + (WindowFrame.Size.X.Offset / 2), 0, WindowOutlineBorder.Position.Y.Offset + 8)
-    WindowTitle.BackgroundTransparency = 1
-    WindowTitle.TextXAlignment = Enum.TextXAlignment.Center
-end
 
 
         --
