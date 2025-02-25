@@ -343,121 +343,37 @@ end
 --
 do
 function Library.CreateLoader(Title, WindowSize)
-    local Window = {
-        Max = 2, Current = 0
-    }
+    local Window = { Max = 2, Current = 0 }
 
-    Library.Theme.Logo = Utility.AddImage("Abyss/Assets/UI/Logo2.png", "https://i.imgur.com/HI4UTmZ.png")
-
-    local WindowOutline = Utility.AddDrawing("Square", {
-        Size = WindowSize,
-        Thickness = 0,
-        Color = Library.Theme.Outline,
-        Visible = true,
-        Filled = true
-    })
+    -- Library.Theme.Logo = Utility.AddImage("Abyss/Assets/UI/Logo2.png", "https://i.imgur.com/HI4UTmZ.png")
+    -- Creating UI elements without Drawing
+    local WindowOutline = Instance.new("Frame")
+    WindowOutline.Size = UDim2.new(0, WindowSize.X, 0, WindowSize.Y)
+    WindowOutline.BorderSizePixel = 0
+    WindowOutline.BackgroundColor3 = Library.Theme.Outline
     WindowOutline.Position = Utility.MiddlePos(WindowOutline)
 
-    local WindowOutlineBorder = Utility.AddDrawing("Square", {
-        Size = Vector2.new(WindowOutline.Size.X - 2, WindowOutline.Size.Y - 2),
-        Position = Vector2.new(WindowOutline.Position.X + 1, WindowOutline.Position.Y + 1),
-        Thickness = 0,
-        Color = Library.Theme.Accent[1],
-        Visible = true,
-        Filled = true
-    })
+    local WindowOutlineBorder = Instance.new("Frame")
+    WindowOutlineBorder.Size = UDim2.new(0, WindowSize.X - 2, 0, WindowSize.Y - 2)
+    WindowOutlineBorder.Position = UDim2.new(0, WindowOutline.Position.X.Offset + 1, 0, WindowOutline.Position.Y.Offset + 1)
+    WindowOutlineBorder.BorderSizePixel = 0
+    WindowOutlineBorder.BackgroundColor3 = Library.Theme.Accent[1]
 
-    local WindowFrame = Utility.AddDrawing("Square", {
-        Size = Vector2.new(WindowOutlineBorder.Size.X - 2, WindowOutlineBorder.Size.Y - 2),
-        Position = Vector2.new(WindowOutlineBorder.Position.X + 1, WindowOutlineBorder.Position.Y + 1),
-        Thickness = 0,
-        Transparency = 1,
-        Color = Library.Theme.DarkContrast,
-        Visible = true,
-        Filled = true
-    })
+    local WindowFrame = Instance.new("Frame")
+    WindowFrame.Size = UDim2.new(0, WindowSize.X - 4, 0, WindowSize.Y - 4)
+    WindowFrame.Position = UDim2.new(0, WindowOutlineBorder.Position.X.Offset + 1, 0, WindowOutlineBorder.Position.Y.Offset + 1)
+    WindowFrame.BorderSizePixel = 0
+    WindowFrame.BackgroundTransparency = 1
+    WindowFrame.BackgroundColor3 = Library.Theme.DarkContrast
 
-    local WindowTopline = Utility.AddDrawing("Square", {
-        Size = Vector2.new(WindowOutline.Size.X - 2, 2),
-        Position = Vector2.new(WindowOutlineBorder.Position.X, WindowOutlineBorder.Position.Y),
-        Thickness = 0,
-        Color = Library.Theme.Accent[1],
-        Visible = false,
-        Filled = true
-    })
-
-    local WindowImage = Utility.AddDrawing("Image", {
-        Size = WindowFrame.Size,
-        Position = WindowFrame.Position,
-        Transparency = 1,
-        Visible = true,
-        Data = Library.Theme.Gradient
-    })
-
-    local WindowTitle = Utility.AddDrawing("Text", {
-        Font = Library.Theme.Font,
-        Size = Library.Theme.TextSize,
-        Color = Library.Theme.Text,
-        Text = Title,
-        Position = Vector2.new(WindowFrame.Position.X + (WindowFrame.Size.X / 2), WindowOutlineBorder.Position.Y + 8),
-        Visible = true,
-        Center = true,
-        Outline = false
-    })
-
-    local WindowText = Utility.AddDrawing("Text", {
-        Font = Library.Theme.Font,
-        Size = Library.Theme.TextSize,
-        Color = Library.Theme.Text,
-        Visible = true,
-        Center = true,
-        Outline = false
-    })
-
-    local SliderInline = Utility.AddDrawing("Square", {
-        Size = Vector2.new(205, 15),
-        Color = Library.Theme.Inline,
-        Position = Vector2.new(WindowFrame.Position.X + (WindowFrame.Size.X / 2), WindowOutlineBorder.Position.Y + 8),
-        Transparency = 0.75,
-        Thickness = 0,
-        Visible = true,
-        Filled = true
-    })
-
-    local SliderOutline = Utility.AddDrawing("Square", {
-        Size = Vector2.new(SliderInline.Size.X - 2, SliderInline.Size.Y - 2),
-        Color = Library.Theme.Outline,
-        Transparency = 0.5,
-        Thickness = 0,
-        Visible = true,
-        Filled = true
-    })
-
-    local SliderFrame = Utility.AddDrawing("Square", {
-        Size = Vector2.new(((SliderInline.Size.X - 2) / (Window.Max / math.clamp(Window.Current, 0, Window.Max))), SliderInline.Size.Y - 2),
-        Color = Library.Theme.Accent[1],
-        Transparency = 0.75,
-        Thickness = 0,
-        Visible = true,
-        Filled = true
-    })
-
-    local SliderFrameShader = Utility.AddDrawing("Image", {
-        Size = Vector2.new(SliderInline.Size.X - 2, SliderInline.Size.Y - 2),
-        Transparency = 1,
-        Visible = true,
-        Data = Library.Theme.Gradient
-    })
-
-    local MiddleIcon = Utility.AddDrawing("Image", {
-        Size = Vector2.new(175, 175),
-        Rounding = 5,
-        Transparency = 1,
-        Visible = true,
-        Data = Library.Theme.Logo
-    })
-
-    return Window
+    local WindowTitle = Instance.new("TextLabel")
+    WindowTitle.Font = Library.Theme.Font
+    WindowTitle.TextSize = Library.Theme.TextSize
+    WindowTitle.TextColor3 = Library.Theme.Text
+    WindowTitle.Text = Title
+    WindowTitle.Position = UDim2.new(0, WindowFrame.Position.X.Offset + (WindowFrame.Size.X.Offset / 2), 0, WindowOutlineBorder.Position.Y.Offset + 8)
+    WindowTitle.BackgroundTransparency = 1
+    WindowTitle.TextXAlignment = Enum.TextXAlignment.Center
 end
 
 
