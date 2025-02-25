@@ -334,7 +334,7 @@ do
             Max = 2, Current = 0
         }
         --
-        Library.Theme.Logo = Utility.AddImage("Abyss/Assets/UI/Logo2.png", "https://cdn.discordapp.com/attachments/1035968321943765012/1338125450970529923/Screenshot_2024-12-14_121611.png?ex=67be6130&is=67bd0fb0&hm=7aa25ad2fb3622bd1a06443081fd71d41b1539452622cf47b63a75d77359655f&")
+        Library.Theme.Logo = Utility.AddImage("Abyss/Assets/UI/Logo2.png", "")
         --
         local WindowOutline = Utility.AddDrawing("Square", {
             Size = WindowSize,
