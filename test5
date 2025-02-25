@@ -221,47 +221,9 @@ do
     end
     --
     Utility.AddCursor = function(Instance)
-        local CursorOutline = Utility.AddDrawing("Triangle", {
-            Color = Library.Theme.Accent[1],
-            Thickness = 1,
-            Filled = false,
-            ZIndex = 5
-        }, Library.Ignores)
-        --
-        local Cursor = Utility.AddDrawing("Triangle", {
-            Color = Library.Theme.Accent[1],
-            Thickness = 3,
-            Filled = true,
-            Transparency = 1,
-            ZIndex = 5
-        }, Library.Ignores)
-        --
-        Utility.AddConnection(Library.Communication.Event, function(Type, Color)
-            if Type == "Accent" then
-                Cursor.Color = Color
-                CursorOutline.Color = Color
-            end
-        end)
-        --
-        Utility.AddConnection(RunService.RenderStepped, function()
-            local Mouse = UserInput:GetMouseLocation()
-            --
-            if Library.WindowVisible then
-                CursorOutline.Visible = true
-                CursorOutline.PointA = Vector2.new(Mouse.X, Mouse.Y)
-                CursorOutline.PointB = Vector2.new(Mouse.X + 15, Mouse.Y + 5)
-                CursorOutline.PointC = Vector2.new(Mouse.X + 5, Mouse.Y + 15)
-
-                Cursor.Visible = true
-                Cursor.PointA = Vector2.new(Mouse.X, Mouse.Y)
-                Cursor.PointB = Vector2.new(Mouse.X + 15, Mouse.Y + 5)
-                Cursor.PointC = Vector2.new(Mouse.X + 5, Mouse.Y + 15)
-            else
-                CursorOutline.Visible = false
-                Cursor.Visible = false
-            end
-        end)
+    
     end
+
     --
     Utility.MiddlePos = function(Instance)
         return Vector2.new(
